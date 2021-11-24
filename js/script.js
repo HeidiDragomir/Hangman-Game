@@ -5,15 +5,20 @@ const wordList = ["egenskap", "uppskattar", "omständighet"];
 
 // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
 let selectedWord = "";
+let guess;
+let guesses = [ ];     // Number: håller antalet gissningar som gjorts
+// Array av DOM-noder: Rutorna där bokstäverna ska stå
+let letterBox;;
+
+
 
 // DOM-nod: knappen som du startar spelet med
 let startGameBtn = document.querySelector("#startGameBtn");
 
-// Array av DOM-noder: Rutorna där bokstäverna ska stå
-let letterBox = document.querySelector("#letterBoxes > ul");
+
 
 let maxWrong = 6;   //Number: 
-let guesses = 0;     // Number: håller antalet gissningar som gjorts
+
 let hangmanImg;      // Sträng: sökväg till bild som kommer visas (och ändras) fel svar. t.ex. `/images/h1.png`
 
 let msgHolderEl;     // DOM-nod: Ger meddelande när spelet är över
@@ -28,17 +33,25 @@ let letterButtonEls; // Array av DOM-noder: Knapparna för bokstäverna
         selectedWord = wordList[Math.floor(Math.random() * wordList.length)];
     }
     generateRandomWord();
-
-
-     // Funktion som tar fram bokstävernas rutor, antal rutor beror på vilket ord slumptas fram
-    /*function createLetterBoxes() {
-        for(let i = 0; i < selectedWord.length; i++) {
-        selectedWord.push(i);
-
-     }
-console.log(selectedWord);
-
-    }*/
+    wordList.push(selectedWord);
+    
+    
+// Funktion som tar fram bokstävernas rutor, antal rutor beror på vilket ord slumptas fram
+    function createLetterBoxes() {
+        for (let i = 0; i < selectedWord.length; i++) {
+            letterBox = document.querySelector("#letterBoxes > ul");
+            letterBox.setAttribute("id", "new-word");
+            guess = document.createElement("li");
+            guess.setAttribute("class", "guess");
+            guess.innerHTML = "_";
+            guesses.push(guess);
+            letterBox.appendChild(guess);
+        }
+    }
+    createLetterBoxes();
+     
+     
+    
 
 //}
 
