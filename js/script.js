@@ -66,12 +66,13 @@ letterButton.forEach(button => {
     button.addEventListener("click", function () {
        button.setAttribute("disabled", "");
        lettersClick = button.textContent;
+       allLettersClick.push(lettersClick);
+       
             if (lettersSelectedWord.indexOf(lettersClick) !== -1) {
-                allLettersClick.push(lettersClick);
                 guessWord = lettersSelectedWord.indexOf(allLettersClick[allLettersClick.length - 1]);
                 
                 
-                guessWord = button.value;
+                //guessWord = button.value;
                
                 
                 //inputItem[i].setAttribute("value", lettersClick);
