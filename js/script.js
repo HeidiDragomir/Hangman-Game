@@ -4,13 +4,15 @@
 let startGameBtn = document.querySelector("#startGameBtn");     // DOM-nod: knappen som du startar spelet med
 const wordList = ["hey", "uppskattar", "helloo"];    // Array: med spelets alla ord
 let selectedWord;       // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
+let lettersSelectedWord = [];
 let itemList;
 let inputItem;
-let guesses = [ ];     // Number: håller antalet gissningar som gjorts
+let guesses = [];     // Number: håller antalet gissningar som gjorts
 let letterBox;         // Array av DOM-noder: Rutorna där bokstäverna ska stå
 let letterButton = document.querySelectorAll("ul button"); // Array av DOM-noder: Knapparna för bokstäverna
-
-let lettersElement = null;
+let lettersClick;
+let allLettersClick = [];
+let guessWord = [];
 
 let maxWrong = 6;   //Number: 
 let hangmanImg;      // Sträng: sökväg till bild som kommer visas (och ändras) fel svar. t.ex. `/images/h1.png`
@@ -30,6 +32,8 @@ startGameBtn.addEventListener("click", function startGame() {*/
     }
     generateRandomWord();
     wordList.push(selectedWord);
+    lettersSelectedWord = selectedWord.split("");
+
     
 
 // Funktion som tar fram bokstävernas rutor, antal rutor beror på vilket ord slumptas fram
@@ -42,7 +46,7 @@ startGameBtn.addEventListener("click", function startGame() {*/
             inputItem = document.createElement("input");
             inputItem.setAttribute("type", "text");
             inputItem.setAttribute("class", "letter");
-            inputItem.setAttribute("value", "");
+            
             itemList.appendChild(inputItem);
         }
     }
@@ -55,18 +59,38 @@ startGameBtn.addEventListener("click", function startGame() {*/
 )*/
 
 
-
-
-
 // Funktion som körs när du trycker på bokstäverna och gissar bokstav 
 
-
+//Funktion som skapar en ny array när du tryck på bokstaverna
 letterButton.forEach(button => {
-    button.addEventListener("click", function guessWord() {
-       console.log(guesses.push(button.textContent));
-        
-    });
-});
+    button.addEventListener("click", function () {
+       button.setAttribute("disabled", "");
+       lettersClick = button.textContent;
+            if (lettersSelectedWord.indexOf(lettersClick) !== -1) {
+                allLettersClick.push(lettersClick);
+                guessWord = lettersSelectedWord.indexOf(allLettersClick[allLettersClick.length - 1]);
+                
+                
+                guessWord = button.value;
+               
+                
+                //inputItem[i].setAttribute("value", lettersClick);
+               
+            }
+    else {
+        console.log("not ok");
+    }   
+    }
+    )
+}
+)
+
+
+
+
+
+
+
 
 //letterButton.addEventListener("click", function guessWord() {
    
