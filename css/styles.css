@@ -132,7 +132,7 @@ footer {
 }
 
 .btn {
-  -moz-user-select: text;
+  user-select: text;
   background-color: #fff;
   background: transparent;
   border-radius: 6px;
@@ -219,4 +219,13 @@ footer {
     transparent 5px
   );
   border-top: 1px solid #000;
+}
+
+#selected-word {
+  display: flex;
+  gap: .5em;
+}
+.letter {
+  padding: 1.5em 0;
+  
 }

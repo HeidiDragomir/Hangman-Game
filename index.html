@@ -20,7 +20,14 @@
                För varje bokstav du gissar rätt, så fylls dyker det upp en bokstav i på den plats som bokstaven du gissade på motsvarar i ordet.
             </p>
         </article>
+        
         <button class="btn btn--stripe" type="button" id="startGameBtn">Starta spelet</button>
+        <section id="letterBoxes">
+            <!-- This is where the matched letters should appear, these should match the number of letters in the selected word -->
+            <ul>
+                
+            </ul>
+        </section>
         <section>Wrong guesses: <span id="mistakes">0</span> of <span id="maxWrong"></span></section>
         <section id="gameBoard">
             <ul id="letterButtons">
@@ -43,7 +50,7 @@
                 <li><button class="btn btn--stripe" type="button" value="Q">Q</button></li>
                 <li><button class="btn btn--stripe" type="button" value="R">R</button></li>
                 <li><button class="btn btn--stripe" type="button" value="S">S</button></li>
-                <li><button class="btn btn--stripe" type="button" value="T" disabled>T</button></li>
+                <li><button class="btn btn--stripe" type="button" value="T">T</button></li>
                 <li><button class="btn btn--stripe" type="button" value="U">U</button></li>
                 <li><button class="btn btn--stripe" type="button" value="V">V</button></li>
                 <li><button class="btn btn--stripe" type="button" value="W">W</button></li>
@@ -54,11 +61,7 @@
                 <li><button class="btn btn--stripe" type="button" value="Ä">Ä</button></li>
                 <li><button class="btn btn--stripe" type="button" value="Ö">Ö</button></li>
             </ul>
-            <section id="letterBoxes">
-                <!-- This is where the matched letters should appear, these should match the number of letters in the selected word -->
-                <ul>
-                </ul>
-            </section>
+            
             <img id="hangman" src="images/h0.png" alt="hangman">
         </section>
         <section id="message">
