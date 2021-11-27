@@ -2,17 +2,22 @@
 
 
 let startGameBtn = document.querySelector("#startGameBtn");     // DOM-nod: knappen som du startar spelet med
-const wordList = ["hey", "uppskattar", "helloo"];    // Array: med spelets alla ord
-let selectedWord;       // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
-let lettersSelectedWord = [];
+const wordList = ["hey", "uppskattar", "hello"];    // Array: med spelets alla ord
+let selectedWord = "";       // Sträng: ett av orden valt av en slumpgenerator från arrayen ovan
+//let lettersSelectedWord = [];
 let itemList;
 let inputItem;
+let inputItems;
 let guesses = [];     // Number: håller antalet gissningar som gjorts
-let letterBox;         // Array av DOM-noder: Rutorna där bokstäverna ska stå
+let letterBoxEls;         // Array av DOM-noder: Rutorna där bokstäverna ska stå
 let letterButton = document.querySelectorAll("ul button"); // Array av DOM-noder: Knapparna för bokstäverna
-let lettersClick;
+let lettersClick = [];
 let allLettersClick = [];
 let guessWord = [];
+let i;
+let orice;
+
+
 
 let maxWrong = 6;   //Number: 
 let hangmanImg;      // Sträng: sökväg till bild som kommer visas (och ändras) fel svar. t.ex. `/images/h1.png`
@@ -32,21 +37,18 @@ startGameBtn.addEventListener("click", function startGame() {*/
     }
     generateRandomWord();
     wordList.push(selectedWord);
-    lettersSelectedWord = selectedWord.split("");
+    //lettersSelectedWord = selectedWord.split("");
 
     
 
 // Funktion som tar fram bokstävernas rutor, antal rutor beror på vilket ord slumptas fram
     function createLetterBoxes() {
-        for (let i = 0; i < selectedWord.length; i++) {
-            letterBox = document.querySelector("#letterBoxes > ul");
-            letterBox.setAttribute("id", "selected-word");
+        for (i = 0; i < selectedWord.length; i++) {
+            letterBoxEls = document.querySelector("#letterBoxes > ul");
+            letterBoxEls.setAttribute("id", "selected-word");
             itemList = document.createElement("li");
-            letterBox.appendChild(itemList);
+            letterBoxEls.appendChild(itemList);
             inputItem = document.createElement("input");
-            inputItem.setAttribute("type", "text");
-            inputItem.setAttribute("class", "letter");
-            
             itemList.appendChild(inputItem);
         }
     }
@@ -58,8 +60,20 @@ startGameBtn.addEventListener("click", function startGame() {*/
 
 )*/
 
-
 // Funktion som körs när du trycker på bokstäverna och gissar bokstav 
+
+function findIndexLetter() {
+    for (i = 0; i < selectedWord.length; i++) {
+        orice = selectedWord.indexOf(lettersClick[i]);
+        if (orice !== -1) {    
+            setValue();
+    }    
+        }
+}
+    
+function setValue() {
+    document.getElementsByTagName("input")[orice].setAttribute("value", lettersClick);
+}
 
 //Funktion som skapar en ny array när du tryck på bokstaverna
 letterButton.forEach(button => {
@@ -67,20 +81,17 @@ letterButton.forEach(button => {
        button.setAttribute("disabled", "");
        lettersClick = button.textContent;
        allLettersClick.push(lettersClick);
-       
-            if (lettersSelectedWord.indexOf(lettersClick) !== -1) {
-                guessWord = lettersSelectedWord.indexOf(allLettersClick[allLettersClick.length - 1]);
-                
-                
-                //guessWord = button.value;
-               
-                
-                //inputItem[i].setAttribute("value", lettersClick);
+       if (selectedWord.indexOf(lettersClick) !== -1) {
+        findIndexLetter()
+        
+
+            
                
             }
+           
     else {
         console.log("not ok");
-    }   
+    }  
     }
     )
 }
