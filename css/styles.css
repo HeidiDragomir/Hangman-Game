@@ -227,5 +227,6 @@ footer {
 }
 .letter {
   padding: 1.5em 0;
+  text-transform: uppercase;
   
 }

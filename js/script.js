@@ -49,6 +49,7 @@ startGameBtn.addEventListener("click", function startGame() {*/
             itemList = document.createElement("li");
             letterBoxEls.appendChild(itemList);
             inputItem = document.createElement("input");
+            inputItem.setAttribute("class", "letter")
             itemList.appendChild(inputItem);
         }
     }
@@ -104,22 +105,11 @@ letterButton.forEach(button => {
 
 
 
-//letterButton.addEventListener("click", function guessWord() {
+
    
    
   
-   /*if (selectedWord.includes(letter)) {
-       const indexesList = getindexes(letter);
-       indexesList.forEach((val, i) => {
-           letterButton[value].textContent = this.textContent;
-       });
-   }*/
-
-
-
-
-
-
+  
 
 // Funktion som ropas vid vinst eller förlust, gör olika saker beroende tillståndet
 // Funktion som inaktiverar/aktiverar bokstavsknapparna beroende på vilken del av spelet du är på
