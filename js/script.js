@@ -15,7 +15,7 @@ let lettersClick = [];
 let allLettersClick = [];
 let guessWord = [];
 let i;
-let orice;
+let index;
 
 
 
@@ -65,15 +65,15 @@ startGameBtn.addEventListener("click", function startGame() {*/
 
 function findIndexLetter() {
     for (i = 0; i < selectedWord.length; i++) {
-        orice = selectedWord.indexOf(lettersClick[i]);
-        if (orice !== -1) {    
+        index = selectedWord.indexOf(lettersClick, i); 
+        if (index !== -1) {    
             setValue();
     }    
         }
 }
     
 function setValue() {
-    document.getElementsByTagName("input")[orice].setAttribute("value", lettersClick);
+    document.getElementsByTagName("input")[index].setAttribute("value", lettersClick);
 }
 
 //Funktion som skapar en ny array när du tryck på bokstaverna
