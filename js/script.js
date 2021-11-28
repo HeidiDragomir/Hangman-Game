@@ -85,7 +85,6 @@ letterButton.forEach(button => {
        if (selectedWord.indexOf(lettersClick) !== -1) {
         
         
-        
         }
           
     else {
