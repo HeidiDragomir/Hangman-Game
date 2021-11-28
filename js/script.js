@@ -8,15 +8,16 @@ let lettersSelectedWord = [];
 let itemList;
 let inputItem;
 let inputItems;
-let guesses = 0;     // Number: håller antalet gissningar som gjorts
+let mistakes = 0;     // Number: håller antalet gissningar som gjorts
 let letterBoxEls;         // Array av DOM-noder: Rutorna där bokstäverna ska stå
 let letterButton = document.querySelectorAll("ul button"); // Array av DOM-noder: Knapparna för bokstäverna
 let lettersClick = [];
 let allLettersClick = [];
-let guessWord = [];
 let i;
 let index;
 let lives = 6;
+let guesses = 0;
+let orice = [];
 
 
 
@@ -40,6 +41,7 @@ function createLetterBoxes() {
         inputItem = document.createElement("input");
         inputItem.setAttribute("class", "letter")
         itemList.appendChild(inputItem);
+       
     }
 }
 
@@ -49,6 +51,7 @@ startGameBtn.addEventListener("click", function startGame() {
     wordList.push(selectedWord);
     lettersSelectedWord = selectedWord.split("");
     createLetterBoxes();
+    
  }
 )
 
@@ -57,23 +60,38 @@ startGameBtn.addEventListener("click", function startGame() {
 function findIndexLetter() {
     for (i = 0; i < selectedWord.length; i++) {
         index = selectedWord.indexOf(lettersClick, i); 
+       
         if (index !== -1) {    
+            
             setValue();
             
-    }    
-        }
-}
+        }  
+        }   
+        } 
+
 
 //Set the value attribute to all letters which are the same with the ones from selectedWord
 function setValue() {
     document.getElementsByTagName("input")[index].setAttribute("value", lettersClick);
+    
+    
 }
+function uniqueValues() {
+    orice = lettersSelectedWord.filter((value, index, array) => array.indexOf(value) === index);
+  }
 
-function decreaseLife() {
-    lives--;
-    if (lives === 0) {
-        alert(msgHolderEl);
+
+function countMistakes() {
+    for (let j = 6; j >= mistakes; j--) {
+        hangmanImg = `images/h${mistakes + 1}.png`;
+        document.querySelector("img").src = hangmanImg;
+        
     }
+        mistakes++;
+        if (mistakes === 6) {
+            alert(msgHolderEl);
+           
+        }
 }
 //Funktion som skapar en ny array när du tryck på bokstaverna
 letterButton.forEach(button => {
@@ -81,32 +99,28 @@ letterButton.forEach(button => {
        button.setAttribute("disabled", "");
        lettersClick = button.textContent;
        allLettersClick.push(lettersClick);
-       findIndexLetter();
-       if (selectedWord.indexOf(lettersClick) !== -1) {
-        
-        
+      findIndexLetter();
+      
+      if (selectedWord.indexOf(lettersClick) !== -1) {
+        guesses++;
+        uniqueValues();
+        if (guesses = orice.length) {
+          alert('Du vinner');
+      }
         }
-          
+
+      
+
     else {
-        
-        for (let j = 6; j >= guesses; j--) {
-            hangmanImg = `images/h${guesses + 1}.png`;
-            document.querySelector("img").src = hangmanImg;
-            
-        }
-            guesses++;
-            
-        
-        
-        
-        
-    }  
+    countMistakes();
+                
+}  
+      
+       
     }
     )
 }
 )
-
-
 
 
 
