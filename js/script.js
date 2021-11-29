@@ -90,8 +90,15 @@ function countMistakes() {
         mistakes++;
         if (mistakes === 6) {
             alert(msgHolderEl);
-           
+           //stopgame
         }
+}
+
+
+function resetGame() {
+    document.querySelector("a").onclick = startGame;
+    
+
 }
 //Funktion som skapar en ny array när du tryck på bokstaverna
 letterButton.forEach(button => {
@@ -100,27 +107,33 @@ letterButton.forEach(button => {
        lettersClick = button.textContent;
        allLettersClick.push(lettersClick);
       findIndexLetter();
+      uniqueValues();
       
       if (selectedWord.indexOf(lettersClick) !== -1) {
         guesses++;
-        uniqueValues();
-        if (guesses = orice.length) {
-          alert('Du vinner');
-      }
+        if (guesses == orice.length) {
+            alert("win");
+           
+            //startGame();
+        //STOP
+        }
+        
+        
         }
 
-      
-
-    else {
-    countMistakes();
-                
-}  
-      
+      else {
+        countMistakes();       
+        }  
        
     }
+    
+    
     )
 }
+
 )
+
+
 
 
 
