@@ -16,7 +16,7 @@ let guesses = 0;
 let fltLetters = [];
 let hangmanImg;
 let msgHolderWin = "Snyggt jobbat! Du har vunnit! Om du vill spela igen tryck på Starta spelet knapp!";
-let msgHolderLose = "Tyvärr, du har förlorat! Ingen panik, du kan spela igen. Tryck på Starta spelet knapp!";
+let msgHolderLose = "Tyvärr, du har förlorat! Ingen panik, du kan spela igen :) Tryck på Starta spelet knapp!";
     
     
     
@@ -51,18 +51,17 @@ function findIndexLetter() {
     }   
 } 
 
-
-//Funktion som lägger till attributet "value" till gissade bokstaverna
+// Funktion som lägger till attributet "value" till gissade bokstaverna
 function setValue() {
     document.getElementsByTagName("input")[index].setAttribute("value", lettersClick);
 }
 
-//Funktion som filterar word selected bokstaverna för att veta hur många det finns (de som upprepar bara en gång)
+// Funktion som filterar word selected bokstaverna för att veta hur många det finns (de som upprepar bara en gång)
 function uniqueValues() {
     fltLetters = lettersSelectedWord.filter((value, index, array) => array.indexOf(value) === index);
 }
 
-//Funktion som räknar alla felen och för varje fel dyker upp hangman bilden; om du har vunnit dyker upp en meddelande
+// Funktion som räknar alla felen och för varje fel dyker upp hangman bilden; om du har vunnit dyker upp en meddelande
 function countMistakes() {
     for (let j = 6; j >= mistakes; j--) {
         hangmanImg = `images/h${mistakes}.png`;
@@ -73,11 +72,11 @@ function countMistakes() {
     mistakes++;
     if (mistakes === 7) {
         alert(msgHolderLose);
-        setInterval(reloadPage, 2000);  
+        setInterval(reloadPage, 1000);  
     }    
 }
 
-//Funktion som reload sidan i fall av vinnet/förlorat
+// Funktion som laddar om sidan i fall av vinst/förlust
 function reloadPage() {
     history.go(0);
 }
@@ -100,7 +99,7 @@ startGameBtn.addEventListener("click", function startGame() {
                 guesses++;
                 if (guesses == fltLetters.length) {
                     alert(msgHolderWin);
-                    setInterval(reloadPage, 1500); 
+                    setInterval(reloadPage, 1000); 
                 }
             }
     

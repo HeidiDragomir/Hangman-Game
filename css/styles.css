@@ -46,12 +46,14 @@ ul {
 	list-style-type: none;
 }
 
+/*start game*/
+
 .startGame {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-/*starta spelet button*/
+
 #startGameBtn {
 	margin: 2em 0;
 	font-size: 1em;
@@ -60,7 +62,9 @@ ul {
 	height: 4em;
 }
 
-/* random word board*/
+
+/*random word board*/
+
 #selected-word {
 	display: flex;
 	justify-content: center;
@@ -78,7 +82,9 @@ ul {
 	width: 1em;
 }
 
+
 /*hangman pictures and mistakes board*/
+
 .container {
 	display: flex;
 	align-items: center;
@@ -101,7 +107,9 @@ ul {
 	font-weight: bold;
 }
 
+
 /*alphabet board*/
+
 #gameBoard {
 	padding: 1.5em;
 }
@@ -215,7 +223,9 @@ ul {
 	border-top: 1px solid #000;
 }
 
+
 /*footer part*/
+
 footer p {
 	background-color: silver;
 	border-top: 1px solid #666;
@@ -227,6 +237,8 @@ footer p {
 	flex: none;
 	text-align: center;
 }
+
+/*responsive*/
 
 @media screen and (min-width: 800px) and (max-width: 1920px) {
 	.btn {
@@ -254,6 +266,11 @@ footer p {
 
 	#startGameBtn {
 		width: 15em;
+	}
+
+	.wrongChoices {
+		font-size: 1.3em;
+		font-variant-caps: small-caps;
 	}
 	
 	footer p {
