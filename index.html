@@ -1,74 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hangman</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Välkommen till spelet Hänga gubbe!</h1>
+		</header>
+		<main>
+			<article class="startGame">
+				<button class="btn btn--stripe" type="button" id="startGameBtn">
+					Starta spelet
+				</button>
+				<section id="letterBoxes">
+					<!-- This is where the matched letters should appear, these should match the number of letters in the selected word -->
+					<ul></ul>
+				</section>
+			</article>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Hangman</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
+			<article class="container">
+				<img id="hangman" src="images/h0.png" alt="hangman" />
+				<section class="wrongChoices">
+					<p>Fel gissningar:</p>
+					<p><span id="mistakes">0</span> av <span>6</span></p>
+				</section>
+			</article>
 
-<body>
-    <header>
-        <h1>Välkommen till spelet Hänga gubbe</h1>
-    </header>
-    <main>
-        
-        
-        <button class="btn btn--stripe" type="button" id="startGameBtn">Starta spelet</button>
-        
-        
-        <section id="letterBoxes">
-            <!-- This is where the matched letters should appear, these should match the number of letters in the selected word -->
-            <ul>
-                
-            </ul>
-        </section>
-        <section>Fel gissningar: <span id="mistakes">0</span> of <span id="maxWrong">6</span></section>
-        <section id="gameBoard">
-            <ul id="letterButtons">
-                <li><button class="btn btn--stripe" type="button" value="A">a</button></li>
-                <li><button class="btn btn--stripe" type="button" value="B">b</button></li>
-                <li><button class="btn btn--stripe" type="button" value="C">c</button></li>
-                <li><button class="btn btn--stripe" type="button" value="D">d</button></li>
-                <li><button class="btn btn--stripe" type="button" value="E">e</button></li>
-                <li><button class="btn btn--stripe" type="button" value="F">f</button></li>
-                <li><button class="btn btn--stripe" type="button" value="G">g</button></li>
-                <li><button class="btn btn--stripe" type="button" value="h">h</button></li>
-                <li><button class="btn btn--stripe" type="button" value="I">i</button></li>
-                <li><button class="btn btn--stripe" type="button" value="J">j</button></li>
-                <li><button class="btn btn--stripe" type="button" value="K">k</button></li>
-                <li><button class="btn btn--stripe" type="button" value="L">l</button></li>
-                <li><button class="btn btn--stripe" type="button" value="M">m</button></li>
-                <li><button class="btn btn--stripe" type="button" value="N">n</button></li>
-                <li><button class="btn btn--stripe" type="button" value="O">o</button></li>
-                <li><button class="btn btn--stripe" type="button" value="P">p</button></li>
-                <li><button class="btn btn--stripe" type="button" value="Q">q</button></li>
-                <li><button class="btn btn--stripe" type="button" value="R">r</button></li>
-                <li><button class="btn btn--stripe" type="button" value="S">s</button></li>
-                <li><button class="btn btn--stripe" type="button" value="T">t</button></li>
-                <li><button class="btn btn--stripe" type="button" value="u">u</button></li>
-                <li><button class="btn btn--stripe" type="button" value="V">v</button></li>
-                <li><button class="btn btn--stripe" type="button" value="W">w</button></li>
-                <li><button class="btn btn--stripe" type="button" value="X">x</button></li>
-                <li><button class="btn btn--stripe" type="button" value="Y">y</button></li>
-                <li><button class="btn btn--stripe" type="button" value="Z">z</button></li>
-                <li><button class="btn btn--stripe" type="button" value="Å">å</button></li>
-                <li><button class="btn btn--stripe" type="button" value="Ä">ä</button></li>
-                <li><button class="btn btn--stripe" type="button" value="Ö">ö</button></li>
-            </ul>
-            
-            <img id="hangman" src="images/h0.png" alt="hangman">
-            
-            
-        </section>
-        <section id="message">
-            <!-- This is where messages should appear -->
-        </section>
-    </main>
-    <footer>
-        Chas Academy - Hangman
-    </footer>
-    <script type="text/javascript" src="js/script.js"></script>
-</body>
-
+			<section id="gameBoard">
+				<ul id="letterButtons">
+					<li>
+						<button class="btn btn--stripe" type="button" value="A">a</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="B">b</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="C">c</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="D">d</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="E">e</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="F">f</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="G">g</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="h">h</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="I">i</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="J">j</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="K">k</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="L">l</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="M">m</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="N">n</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="O">o</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="P">p</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="Q">q</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="R">r</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="S">s</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="T">t</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="u">u</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="V">v</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="W">w</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="X">x</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="Y">y</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="Z">z</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="Å">å</button>
+					</li>
+					<li>
+						<button class="btn btn--stripe" type="button" value="Ä">ä</button>
+					</li>
+					<li id="last">
+						<button class="btn btn--stripe" type="button" value="Ö">ö</button>
+					</li>
+				</ul>
+			</section>
+		</main>
+		<footer>
+			<p>&copy; Copyright 2021 Heidi | Hangman</p>
+		</footer>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
 </html>
