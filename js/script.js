@@ -1,5 +1,5 @@
 // Globala variabler
-document.addEventListener("DOMContentLoaded", () => {
+
 
     let startGameBtn = document.querySelector("#startGameBtn");     // DOM-nod: knappen som du startar spelet med
     const wordList = ["hey", "uppskattar", "hello"];    // Array: med spelets alla ord
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let lettersSelectedWord = [];
     let itemList;
     let inputItem;
-    let mistakes = 0;     // Number: håller antalet gissningar som gjorts
+    let mistakes = 1;     // Number: håller antalet gissningar som gjorts
     let letterBoxEls;         // Array av DOM-noder: Rutorna där bokstäverna ska stå
     let letterButton = document.querySelectorAll("ul button"); // Array av DOM-noder: Knapparna för bokstäverna
     let lettersClick = [];
@@ -16,11 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let guesses = 0;
     let orice = [];
     let hangmanImg;      // Sträng: sökväg till bild som kommer visas (och ändras) fel svar. t.ex. `/images/h1.png`
-    let msgHolderWin = "Du har vunnit! Om du vill spela igen tryck på Starta spelet knapp!";
-    let msgHolderLose = "Du har förlorat! Om du vill spela igen tryck på Starta spelet knapp!";     // DOM-nod: Ger meddelande när spelet är över
+    let msgHolderWin = "Snyggt jobbat! Du har vunnit! Om du vill spela igen tryck på Starta spelet knapp!";
+    let msgHolderLose = "Du har förlorat! Ingen panik, du kan spela igen. Tryck på Starta spelet knapp!";     // DOM-nod: Ger meddelande när spelet är över
     
     
     
+
     // Funktion som slumpar fram ett ord
     function generateRandomWord() {
             selectedWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -68,19 +69,21 @@ document.addEventListener("DOMContentLoaded", () => {
     
     function countMistakes() {
         for (let j = 6; j >= mistakes; j--) {
-            hangmanImg = `images/h${mistakes + 1}.png`;
+            hangmanImg = `images/h${mistakes}.png`;
             document.querySelector("img").src = hangmanImg;
+            let countMistakes = document.querySelector("#mistakes");
+           countMistakes.textContent = mistakes;
             
         }
             mistakes++;
-            if (mistakes === 6) {
+            if (mistakes === 7) {
                 alert(msgHolderLose);
-                setInterval(heidi, 1500);  
+                setInterval(reloadPage, 2000);  
             }
             
     }
     
-    function heidi() {
+    function reloadPage() {
         history.go(0);
     }
     
@@ -101,9 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
               
               if (selectedWord.indexOf(lettersClick) !== -1) {
                 guesses++;
+                
+                
                 if (guesses == orice.length) {
                     alert(msgHolderWin);
-                    setInterval(heidi, 1500);
+                    setInterval(reloadPage, 1500);
                    
                 }
                 
@@ -131,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     //Funktion som skapar en ny array när du tryck på bokstaverna
     
-})
+
 
 
 
