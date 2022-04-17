@@ -102,6 +102,10 @@ ul {
 .wrongChoices > p {
 	margin-bottom: 1em;
 }
+
+.wrongGuesses {
+	font-size: .9em;
+}
 .wrongChoices span {
 	font-size: 1.5em;
 	font-weight: bold;

@@ -9,12 +9,12 @@
 	</head>
 	<body>
 		<header>
-			<h1>Välkommen till spelet Hänga gubbe!</h1>
+			<h1>Welcome to Hangman game!</h1>
 		</header>
 		<main>
 			<article class="startGame">
 				<button class="btn btn--stripe" type="button" id="startGameBtn">
-					Starta spelet
+					Start game
 				</button>
 				<section id="letterBoxes">
 					<!-- This is where the matched letters should appear, these should match the number of letters in the selected word -->
@@ -25,8 +25,8 @@
 			<article class="container">
 				<img id="hangman" src="images/h0.png" alt="hangman" />
 				<section class="wrongChoices">
-					<p>Fel gissningar:</p>
-					<p><span id="mistakes">0</span> av <span>6</span></p>
+					<p class="wrongGuesses">Wrong guesses:</p>
+					<p class="wrongGuesses"><span id="mistakes">0</span> av <span>6</span></p>
 				</section>
 			</article>
 
