@@ -4,4 +4,4 @@
 
 <p>&nbsp;</p>
 
-![](<img src="/images/hangman-game.png"/>)
+![](https://raw.githubusercontent.com/HeidiDragomir/Hangman-Game/main/images/hangman-game.png)
